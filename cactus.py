@@ -87,6 +87,12 @@ class Cactus(Plot, object):
         if self.y_log:
             ax.set_yscale('log')
 
+        x_left, x_right = ax.get_xlim()
+        y_low, y_high = ax.get_ylim()
+        #set aspect ratio
+        ratio=0.85
+        ax.set_aspect(abs((x_right-x_left)/(y_low-y_high))*ratio)
+
         # setting ticks
         # plt.xticks(np.arange(self.x_min, self.x_max + 1, 2))
         # if not self.y_log:
