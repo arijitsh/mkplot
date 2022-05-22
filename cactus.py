@@ -45,8 +45,8 @@ class Cactus(Plot, object):
         # making lines
         coords = []
         for d in data:
-            coords.append(np.arange(1, len(d[1]) + 1))  # xs (separate for each line)
             coords.append(np.array(sorted(d[1])))
+            coords.append(np.arange(1, len(d[1]) + 1))  # xs (separate for each line)
         lines = plt.plot(*coords, zorder=3)
 
         # setting line styles
@@ -66,8 +66,8 @@ class Cactus(Plot, object):
             plt.grid(True, color=self.grid_color, ls=self.grid_style, lw=self.grid_width, zorder=1)
 
         # axes limits
-        plt.xlim(self.x_min, self.x_max if self.x_max else math.ceil(max([d[2] for d in data]) / float(100)) * 100)
-        plt.ylim(self.y_min, self.y_max if self.y_max else self.timeout)
+        plt.ylim(self.x_min, self.x_max if self.x_max else math.ceil(max([d[2] for d in data]) / float(100)) * 100)
+        plt.xlim(self.y_min, self.y_max if self.y_max else self.timeout)
 
         # axes labels
         if self.x_label:
